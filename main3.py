@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MARGIN = 20
-INITIAL_VELOCITY = 3
+INITIAL_VELOCITY = 6
 NUM_ANIMALS = 5
 SCREEN_TITLE = "Collision Exercise"
 
@@ -51,14 +51,19 @@ class Window(arcade.Window):
 
             collisions = a.collides_with_list(self.animal_list)
             for c in collisions:
-                # implement conservation of momentum here
-                # pass just does nothing. After you add your code, ou can delete what is now on line 56
-                pass
+               if a.center_x > c.center_x:
+                   a.dx = abs(a.dx)/1.20 * -1
+               if a.center_x < c.center_x:
+                   a.dx = abs(a.dx) / 1.20
+               if a.center_y > c.center_y:
+                   a.dy = abs(a.dy) / 1.20
+               if a.center_y < c.center_y:
+                   a.dy = abs(a.dy) / 1.20 * -1 
 
 
             if a.center_x <= MARGIN:
                 a.center_x = MARGIN
-                a.dx = abs(a.dx)
+                a.dx = abs(a.dx) 
             if a.center_x >= SCREEN_WIDTH - MARGIN:
                 a.center_x = SCREEN_WIDTH - MARGIN
                 a.dx = abs(a.dx)*-1
