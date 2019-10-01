@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 MARGIN = 20
-INITIAL_VELOCITY = 6
+INITIAL_VELOCITY = 5
 NUM_ANIMALS = 5
 SCREEN_TITLE = "Collision Exercise"
 
